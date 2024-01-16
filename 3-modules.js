@@ -4,8 +4,10 @@ const sayHi = require('./5-utils');
 
 const data = require('./6-alternative-flavor');
 
-sayHi('Tomás');
-sayHi(names.john);
-sayHi(names.peter);
+require('./7-mind-grenade');
 
-console.log(data);
+// sayHi('Tomás');
+// sayHi(names.john);
+// sayHi(names.peter);
+
+// console.log(data);
