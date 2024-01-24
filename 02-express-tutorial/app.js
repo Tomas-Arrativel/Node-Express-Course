@@ -27,6 +27,11 @@ app.get('/api/products/:productID', (req, res) => {
   return res.json(singleProduct);
 });
 
+app.get('/api/products/:productID/reviews/:reviewID', (req, res) => {
+  console.log(req.params);
+  res.send('Hello world');
+});
+
 app.all('*', (req, res) => {
   res.status(404).send('<h1>Page not found</h1>');
 });
