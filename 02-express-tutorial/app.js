@@ -1,8 +1,10 @@
 const express = require('express');
+const { products } = require('./data');
+
 const app = express();
 
 app.get('/', (req, res) => {
-  res.json([{ name: 'John' }, { name: 'Tomas' }]);
+  res.json(products);
 });
 
 const port = 5000;
