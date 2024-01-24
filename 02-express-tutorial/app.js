@@ -4,7 +4,19 @@ const { products } = require('./data');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.json(products);
+  res.send('<h1>Home page</h1><a href="/api/products">Products</a>');
+});
+
+app.get('/api/products', (req, res) => {
+  const newProducts = products.map((product) => {
+    const { id, name, image } = product;
+    return { id, name, image };
+  });
+  res.status(200).json(newProducts);
+});
+
+app.all('*', (req, res) => {
+  res.status(404).send('<h1>Page not found</h1>');
 });
 
 const port = 5000;
