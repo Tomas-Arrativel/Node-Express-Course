@@ -4,12 +4,11 @@ const logger = require('./logger');
 const app = express();
 
 // req => middleware => res
-app.use(logger); //  always above all methods
+app.use('/api', logger); //  Works only for api/products and api/items
 
 app.get('/', (req, res) => {
   res.send('Home');
 });
-//  app.use(logger) would not work for home page if is place here
 
 app.get('/about', (req, res) => {
   res.send('About');
