@@ -1,16 +1,25 @@
 const express = require('express');
-const app = express();
-
 const logger = require('./logger');
 
-// req => middleware => res
+const app = express();
 
-app.get('/', logger, (req, res) => {
+// req => middleware => res
+app.use(logger);
+
+app.get('/', (req, res) => {
   res.send('Home');
 });
 
 app.get('/about', (req, res) => {
   res.send('About');
+});
+
+app.get('/api/products', (req, res) => {
+  res.send('Products');
+});
+
+app.get('/api/items', (req, res) => {
+  res.send('Items');
 });
 
 const port = 5000;
