@@ -1,14 +1,13 @@
 const express = require('express');
-const logger = require('./logger');
-const authorize = require('./authorize');
+const morgan = require('morgan');
 
 const app = express();
 
 // req => middleware => res
-app.use([authorize, logger]); //  Works only for api/products and api/items
+// app.use([authorize, logger]); //  Works only for api/products and api/items
+app.use(morgan('tiny'));
 
 app.get('/', (req, res) => {
-  console.log(req.user);
   res.send('Home');
 });
 
