@@ -45,6 +45,8 @@ app.get('/api/v1/query', (req, res) => {
     sortedProducts = sortedProducts.slice(0, Number(limit));
   }
   if (sortedProducts.length < 1)
+    // We cant send 2 responses per request
+    // res.status(200).send('No product matched your search');
     return res.status(200).send('No product matched your search');
 
   res.status(200).json(sortedProducts);
