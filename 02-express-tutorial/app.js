@@ -1,25 +1,18 @@
 const express = require('express');
+const path = require('path');
+
 const app = express();
 
-app.get('/', (req, res) => {
-  res.status(200).send('<h1>Home Page</h1>');
-});
+// It is used normally with the public folder
+app.use(express.static('./navbar-app'));
 
-app.get('/about', (req, res) => {
-  res.status(200).send('<h1>About page</h1>');
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname + './navbar-app/index.html'));
 });
 
 app.all('*', (req, res) => {
-  res.status(404).send('<h3>Not found</h3>');
+  res.status(404).send('Resource not found');
 });
 
-app.listen(5000, () => {
-  console.log('Server running on port 5000');
-});
-// app.get
-// app.put
-// app.post
-// app.delete
-// app.all
-// app.use
-// app.listen
+const port = 5000;
+app.listen(port, () => console.log(`Server running on port ${port}`));
