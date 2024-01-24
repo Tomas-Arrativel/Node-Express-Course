@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 
 // It is used normally with the public folder
+// Static folders are files that server doesn't has to change
 app.use(express.static('./navbar-app'));
 
 app.get('/', (req, res) => {
