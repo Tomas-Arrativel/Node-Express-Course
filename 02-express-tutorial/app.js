@@ -1,26 +1,10 @@
 const express = require('express');
-const morgan = require('morgan');
-
 const app = express();
 
-// req => middleware => res
-// app.use([authorize, logger]); //  Works only for api/products and api/items
-app.use(morgan('tiny'));
+let { people } = require('./data');
 
-app.get('/', (req, res) => {
-  res.send('Home');
-});
-
-app.get('/about', (req, res) => {
-  res.send('About');
-});
-
-app.get('/api/products', (req, res) => {
-  res.send('Products');
-});
-
-app.get('/api/items', (req, res) => {
-  res.send('Items');
+app.get('/api/people', (req, res) => {
+  res.status(200).json({ success: true, data: people });
 });
 
 const port = 5000;
