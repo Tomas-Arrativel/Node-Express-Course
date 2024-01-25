@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
 
+const peopleRouter = require('./routes/people');
+
 //  Static folder
 app.use(express.static('./methods-public'));
 //  Parse Form Data
 app.use(express.urlencoded({ extended: false }));
 //  Parse JSON
 app.use(express.json());
+
+app.use('/api/people', peopleRouter);
 
 app.post('/login', (req, res) => {
   const { name } = req.body;

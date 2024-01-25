@@ -3,11 +3,11 @@ const router = express.Router();
 
 let { people } = require('../data');
 
-router.get('/api/people', (req, res) => {
+router.get('/', (req, res) => {
   res.status(200).json({ success: true, data: people });
 });
 
-router.post('/api/people', (req, res) => {
+router.post('/', (req, res) => {
   const { name } = req.body;
   if (!name) {
     return res
@@ -18,7 +18,7 @@ router.post('/api/people', (req, res) => {
   res.status(201).json({ success: true, person: name });
 });
 
-router.post('/api/postman/people', (req, res) => {
+router.post('/postman', (req, res) => {
   const { name } = req.body;
   if (!name) {
     return res
@@ -28,7 +28,7 @@ router.post('/api/postman/people', (req, res) => {
   res.status(201).json({ success: true, data: [...people, name] });
 });
 
-router.put('/api/people/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
 
@@ -45,7 +45,7 @@ router.put('/api/people/:id', (req, res) => {
   res.status(200).json({ success: true, data: newPeople });
 });
 
-router.delete('/api/people/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const { id } = req.params;
 
   const person = people.find((person) => person.id === Number(id));
